@@ -4,7 +4,35 @@ using UnityEngine;
 
 public class Test : MonoBehaviour {
 
+	public class Boss {
+
+		// 現在のMP
+		private int mp = 53; 
+
+		// Magic関数処理
+		public void Magic(int decrease) {
+
+			//mp量が消費mpより上かどうか
+			if (mp > decrease) {
+
+				//消費mp分マイナスする
+				this.mp -= decrease;
+
+				Debug.Log ("魔法攻撃をした。残りMPは" + this.mp + "。");
+			
+			//mp量が消費mpよりも下
+			} else {
+
+				Debug.Log ("MPが足りないため魔法が使えない。");
+
+			}
+
+		}
+
+	}
+
 	void Start () {
+
 
 		//通常課題
 		int[] array = { 30, 20, 60, 80, 10 };
@@ -17,7 +45,7 @@ public class Test : MonoBehaviour {
 
 		}
 
-		Debug.Log ( "逆順" );
+		Debug.Log ( "降順" );
 
 		for (int i = 4; i >= 0; i--) {
 
@@ -25,38 +53,18 @@ public class Test : MonoBehaviour {
 
 		}
 
+
 		//発展課題
 		// Bossクラスの変数を宣言してインスタンスを代入
 		Boss decreasePt = new Boss ();
 
-		// 魔法消費用の関数を呼び出す
-		decreasePt.Magic( 5 );
+		// 魔法消費用の関数を10回＋1回呼び出す
+		for (int i = 1; i <= 11; i++) {
 
-	
-	}
+			Debug.Log ( "MP消費：" + i + "回目");
 
-	public class Boss {
-
-		private int mp = 53; // MP
-
-		//
-		public void Magic(int decrease) {
-
-			for (int i = 0; i <= 10; i++){
-
-				if (mp >= decrease) {
-
-					this.mp -= decrease;
-
-					Debug.Log ("魔法攻撃をした。残りMPは" + this.mp + "。");
-
-				} else {
-
-					Debug.Log ("MPが足りないため魔法が使えない。");
-
-				}
-
-			}
+			//消費MP量
+			decreasePt.Magic (5);
 
 		}
 
