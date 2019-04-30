@@ -13,7 +13,7 @@ public class Test : MonoBehaviour {
 		public void Magic(int decrease) {
 
 			//mp量が消費mpより上かどうか
-			if (mp > decrease) {
+			if (mp >= decrease) {
 
 				//消費mp分マイナスする
 				this.mp -= decrease;
